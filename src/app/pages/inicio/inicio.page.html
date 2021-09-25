@@ -1,33 +1,25 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>inicio</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="mostrarMenu()">
+        <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-avatar>
+        <ion-img src="/assets/icono.png"></ion-img>
+      </ion-avatar>
+    </ion-buttons>
+    <ion-title class="titulo">Inicio</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
 
-  <ion-button routerLink="/alert">
-    Alert
-  </ion-button>
-
-  <ion-button routerLink="/action-sheet">
-    Action-Sheet
-  </ion-button>
-
-  <ion-list>
-    <ion-item>
-      <ion-label>Elemento 1</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Elemento 2</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Elemento 3</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Elemento 4</ion-label>
-    </ion-item>
-
-  </ion-list>
+  
+  <ion-item>
+    <ion-img src="/assets/ciclo.png"></ion-img>
+  </ion-item>
 
 </ion-content>

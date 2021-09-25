@@ -1,24 +1,123 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
+      <ion-button (click)="mostrarMenu()">
+        <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="start">
       <ion-back-button
           defaultHref="/"
           text="Back"
-          color="primary"
+          color="dark"
           mode="ios"
       ></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-avatar>
+        <ion-img src="/assets/icono.png"></ion-img>
+      </ion-avatar>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
 
-  <ion-button routerLink="/inicio">
-    Inicio
-  </ion-button>
+  <ion-card>
+    <ion-card-header>
+      <ion-thumbnail>
+        <ion-img src="/assets/reciclaje_metal.png"></ion-img>
+      </ion-thumbnail>
+      <ion-card-subtitle>Reciclaje Metal</ion-card-subtitle>
+      <ion-card-title class="titulo">Metalera</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Kg $15.000<br>
+    
+    <ion-button (click)="venta()">
+      <ion-icon slot="icon-only" name="add"></ion-icon>
+    </ion-button>
+  </ion-card-content>
+  </ion-card>
 
-  <ion-button routerLink="/action-sheet">
-    Action-Sheet
-  </ion-button>
+  <ion-card>
+    <ion-card-header>
+      <ion-thumbnail>
+        <ion-img src="/assets/reciclaje_electronico.png"></ion-img>
+      </ion-thumbnail>
+      <ion-card-subtitle>Reciclaje Electronico</ion-card-subtitle>
+      <ion-card-title class="titulo">Electro</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Kg $7.000<br>
+      <ion-button (click)="venta()">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
 
+  <ion-card>
+    <ion-card-header>
+      <ion-thumbnail>
+        <ion-img src="/assets/reciclaje_papel.png"></ion-img>
+      </ion-thumbnail>
+      <ion-card-subtitle>Reciclaje Papel</ion-card-subtitle>
+      <ion-card-title class="titulo">Papelera</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Kg $10.000<br>
+      <ion-button (click)="venta()">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-thumbnail>
+        <ion-img src="/assets/reciclaje_organico.png"></ion-img>
+      </ion-thumbnail>
+      <ion-card-subtitle>Reciclaje Organico</ion-card-subtitle>
+      <ion-card-title class="titulo">Compostera</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Kg $1.000<br>
+      <ion-button (click)="venta()">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-thumbnail>
+        <ion-img src="/assets/reciclaje_plastico.png"></ion-img>
+      </ion-thumbnail>
+      <ion-card-subtitle>Reciclaje Plastico</ion-card-subtitle>
+      <ion-card-title class="titulo">Plasticos</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Kg $4.000<br>
+      <ion-button (click)="venta()">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-thumbnail>
+        <ion-img src="/assets/reciclaje_vidrio.png"></ion-img>
+      </ion-thumbnail>
+      <ion-card-subtitle>Reciclaje Vidrio</ion-card-subtitle>
+      <ion-card-title class="titulo">Vidrios</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Kg $7.000<br>
+      <ion-button (click)="venta()">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
