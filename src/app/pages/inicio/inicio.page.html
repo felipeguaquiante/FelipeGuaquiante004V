@@ -5,21 +5,45 @@
         <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
-
-    <ion-buttons slot="end">
-      <ion-avatar>
-        <ion-img src="/assets/icono.png"></ion-img>
-      </ion-avatar>
-    </ion-buttons>
-    <ion-title class="titulo">Inicio</ion-title>
+    <ion-title>inicio</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content color="white" class="ion-padding">
 
-  
   <ion-item>
     <ion-img src="/assets/ciclo.png"></ion-img>
   </ion-item>
+
+    
+
+
+
+<center>
+  <ion-toolbar>
+    <p class="ion-padding">Noticias del mundo</p>
+    <ion-slides mode="ios" pager="ios" scrollbar="ios">
+      <ion-slide *ngFor ="let noticia of noticias; let i= index">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>
+            <span class="text">{{i+1}}</span>
+            <span class="noticia-name">{{noticia.source.name}}</span>
+          </ion-card-subtitle>
+          <ion-card-title>{{noticia.title}}</ion-card-title>
+        </ion-card-header>
+        <ion-img *ngIf="noticia.urlToImage"
+                 [src]="noticia.urlToImage"></ion-img>
+        <ion-card-content>
+          <p class="noticia-description">
+            {{noticia.description}}
+          </p>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+ 
+</ion-slides>
+  </ion-toolbar>
+</center>
 
 </ion-content>

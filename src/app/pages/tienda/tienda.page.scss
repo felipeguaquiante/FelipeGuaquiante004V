@@ -1,11 +1,6 @@
-
 ion-content{
 
     --ion-background-color:#dddddd;
-}
-ion-toolbar{
-
-  --ion-background-color:#dddddd;
 }
 ion-header{
 
@@ -13,10 +8,16 @@ ion-header{
 }
 .titulo{
     color:#000000;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px;
 }
 
 .texto{
     color:#000000;
+}
+
+ion-thumbnail{
+    --size: 100%;
+}
+ion-card{
+
+    --ion-background-color: #ffffff;
 }

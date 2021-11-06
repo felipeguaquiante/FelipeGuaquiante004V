@@ -1,41 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { TeslaService } from 'src/app/services/tesla.service';
+import { Article } from '../../interfaces/interfaces';
+import { MenuController } from '@ionic/angular';
 
-interface Componente{
-  icon: string;
-  name: string;
-  redirecTo: string;
-}
+
 
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.page.html',
   styleUrls: ['./inicio.page.scss'],
 })
-
 export class InicioPage implements OnInit {
 
-  componentes : Componente [] = [
-    {
-      icon: 'paw-outline',
-      name: 'Crear cuenta',
-      redirecTo: '/action-sheet'
-    },
-    {
-      icon: 'sunny-outline',
-      name: 'Buscar comprador',
-      redirecTo: '/alert'
-    },
 
-  ];
+    noticias: Article[]=[]
+    
 
-  constructor(private menuController:MenuController) { }
+  constructor(private noticiaTesla: TeslaService,private menuController: MenuController) { }
 
   ngOnInit() {
+    this.noticiaTesla.getTopHeadLines().subscribe(resp=>{
+      console.log('noticias',resp);
+      this.noticias.push(...resp.articles);
+    });
   }
-
   mostrarMenu(){
-    this.menuController.open('first');
-  }
+        this.menuController.open('first');
+      }
 
 }

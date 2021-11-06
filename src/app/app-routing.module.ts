@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { IngresadoGuard } from './services/ingresado.guard';
 
 const routes: Routes = [
-  
   {
     path: 'inicio',
     loadChildren: () => import('./pages/inicio/inicio.module').then( m => m.InicioPageModule)
@@ -13,12 +13,25 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'alert',
-    loadChildren: () => import('./pages/alert/alert.module').then( m => m.AlertPageModule)
+    path: 'inicio',
+    loadChildren: () => import('./pages/inicio/inicio.module').then( m => m.InicioPageModule)
   },
   {
-    path: 'action-sheet',
-    loadChildren: () => import('./pages/action-sheet/action-sheet.module').then( m => m.ActionSheetPageModule)
+    path: 'tienda',
+    loadChildren: () => import('./pages/tienda/tienda.module').then( m => m.TiendaPageModule)
+  },
+  {
+    path: 'registro',
+    loadChildren: () => import('./pages/registro/registro.module').then( m => m.RegistroPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'maestro',
+    loadChildren: () => import('./pages/maestro/maestro.module').then( m => m.MaestroPageModule),
+    canActivate:[IngresadoGuard]
   },
 ];
 

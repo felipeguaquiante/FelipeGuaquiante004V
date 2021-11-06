@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="mostrarMenu()">
+        <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content> 
+
+  <form #formulario="ngForm" (ngSubmit)="buscarUsuario(newUsuarios.email,newUsuarios.contrasenia)" *ngIf="!usuarioLogueado">
+    <ion-item>
+      <ion-label>Email:</ion-label>
+      <ion-input type="email" placeholder="Email"
+                 name="email" [(ngModel)]="newUsuarios.email"
+                 pattern="^([a-zA-Z0-9_\-\.]+)+@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+                 required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Contraseña:</ion-label>
+      <ion-input type="password" placeholder="Contraseña"
+                 name="password" [(ngModel)]="newUsuarios.contrasenia"
+                 required
+                 minlength="8"
+                 maxlength="15"></ion-input>
+    </ion-item>
+    <ion-button [disabled]="formulario.invalid" type="submit" expand="block">
+
+      Log-in
+      
+    </ion-button>
+  </form>
+ <ion-button (click)="logout()" *ngIf="usuarioLogueado">
+  Log-out
+ </ion-button>
+
+</ion-content>

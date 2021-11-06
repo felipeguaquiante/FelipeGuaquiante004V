@@ -12,20 +12,39 @@ interface Componente{
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
 
-  componentes : Componente [] = [
+  componentes : Componente[] = [
+    
+    {
+      icon: 'home-outline',
+      name: 'Inicio',
+      redirecTo: '/inicio'
+      },
+    {
+      icon: 'american-football',
+      name: 'Tienda',
+      redirecTo: '/tienda'
+      },
     {
       icon: 'paw-outline',
-      name: 'Crear cuenta',
-      redirecTo: '/action-sheet'
-    },
+      name: 'Registro',
+      redirecTo: '/registro'
+      },
     {
-      icon: 'sunny-outline',
-      name: 'Buscar comprador',
-      redirecTo: '/alert'
-    },
-
+   
+      icon: 'log-in',
+      name: 'login',
+      redirecTo: '/login'
+      },
+    {
+      icon: 'barcode',
+      name: 'Maestro',
+      redirecTo: '/maestro'
+      }
   ];
+
+  constructor() {}
+
+ 
   
 }

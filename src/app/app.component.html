@@ -1,20 +1,18 @@
 <ion-app>
-  <ion-menu contentId="main" menuId="first" side="start" >
+  <ion-menu side="start" menuId="first" contentId="main">
     <ion-header>
       <ion-toolbar color="primary">
-        <ion-title>Menú</ion-title>
+        <ion-title>Start Menu</ion-title>
       </ion-toolbar>
     </ion-header>
-
     <ion-content>
       <ion-list>
-        
-        <ion-menu-toggle *ngFor="let c of componentes">
-        <ion-item [routerLink]="c.redirecTo"
-            detail="true">
+          <ion-menu-toggle *ngFor="let c of componentes">
+            <ion-item [routerLink]="c.redirecTo"
+                    detail=true>
             <ion-icon [name]="c.icon" slot="start" color="primary"></ion-icon>
-              {{c.name}}
-        </ion-item>
+            {{c.name}}
+          </ion-item>
         </ion-menu-toggle>
       </ion-list>
     </ion-content>
