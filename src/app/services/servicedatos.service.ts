@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
-
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 import { ToastController} from '@ionic/angular';
 
@@ -21,7 +22,7 @@ export class ServicedatosService {
 
   private _storage : Storage;
 
-  constructor(private storage: Storage, private toastController: ToastController) { 
+  constructor(private storage: Storage, private toastController: ToastController, public authService: AuthService, private router: Router) { 
     this.init();
   }
   async init(){
@@ -42,8 +43,6 @@ export class ServicedatosService {
      })
    }
  
-    //Nos permmite obtener la información almacenada en el storage 
-    //por medio de sus keys 
  
     getDatos(): Promise<Usuarios[]>{
      return this.storage.get(ITEMS_KEY);
@@ -70,25 +69,26 @@ export class ServicedatosService {
    }
 
    //Buscar por nombre
-   buscarUsuario(iemail: string, icontrasenia:string):String{
+   routeRedirect = '';
+   buscarUsuario(iemail: string, icontrasenia:string){
     let valor="";
     this.storage.get(ITEMS_KEY).then((datos : Usuarios[])=>{
       if (!datos || datos.length === 0){
         return null;
       }
-      let toKeep: Usuarios[] = []; 
       for (let i of datos){
-        toKeep.push(i)
         if (i.email === iemail && i.contrasenia === icontrasenia){
-           valor=i.email;
+           valor="existe";
            this.showToast("Bienvenido "+i.nombre);
-           break;
+           this.authService.login();
+           this.routeRedirect = this.authService.urlUsuarioIntentaAcceder;
+           this.authService.urlUsuarioIntentaAcceder='';
+           this.router.navigate([this.routeRedirect]);
         }
       }
       if(valor===""){
-        this.showToast("Usuario y/o contraseña son incorrectos.");
+        this.showToast("Usuario y/o contraseña incorrectos");
       }
-      return this.storage.set(ITEMS_KEY, toKeep);
     });
     
     return valor;

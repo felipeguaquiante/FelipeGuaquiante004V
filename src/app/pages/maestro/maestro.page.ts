@@ -18,6 +18,7 @@ export class MaestroPage implements OnInit {
 
 
   @ViewChild('myList')myList : IonList;
+  resultado: string;
   constructor(private storageService: ServicedatosService, private router: Router, 
     private plt: Platform, private toastController: ToastController,private menuController: MenuController,private alertController:AlertController, public authService: AuthService) { 
       this.plt.ready().then(()=>{
@@ -67,17 +68,8 @@ loadDatos(){
 }
 
 //buscar usuario
-routeRedirect = '';
 buscarUsuario(email: string,contrasenia:string){
-    var resultado = this.storageService.buscarUsuario(email,contrasenia);
-    if(resultado!==null){
-      this.showToast(resultado)
-      this.authService.login();
-      this.routeRedirect = this.authService.urlUsuarioIntentaAcceder;
-      this.authService.urlUsuarioIntentaAcceder='';
-      this.router.navigate([this.routeRedirect]);
-    }
-     this.showToast(resultado)
+  this.resultado = this.storageService.buscarUsuario(email,contrasenia);
 } 
 
 //update

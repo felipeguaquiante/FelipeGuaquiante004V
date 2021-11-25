@@ -3,7 +3,6 @@ import { ServicedatosService, Usuarios } from 'src/app/services/servicedatos.ser
 import { Platform , ToastController, IonList , MenuController , AlertController} from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +18,7 @@ export class LoginPage implements OnInit {
 
   @ViewChild('myList')myList : IonList;
 
-  constructor(private storageService: ServicedatosService, private router: Router, 
+  constructor(private storageService: ServicedatosService, 
     private plt: Platform, private toastController: ToastController,private menuController: MenuController,private alertController:AlertController, public authService: AuthService) { 
       this.plt.ready().then(()=>{
         this.loadDatos();
@@ -62,23 +61,14 @@ loadDatos(){
   this.newUsuarios.id = Date.now();
   this.storageService.addDatos(this.newUsuarios).then(usuario=>{
     this.newUsuarios = <Usuarios>{};
-    this.showToast('!Usuario Agregados');
+    this.showToast('!Usuario Agregado');
     this.loadDatos();
   });
 }
 
 //buscar usuario
-routeRedirect = '';
 buscarUsuario(email: string,contrasenia:string){
-    let resultado = this.storageService.buscarUsuario(email,contrasenia);
-    if(resultado!==null){
-      this.showToast(resultado)
-      this.authService.login();
-      this.routeRedirect = this.authService.urlUsuarioIntentaAcceder;
-      this.authService.urlUsuarioIntentaAcceder='';
-      this.router.navigate([this.routeRedirect]);
-    }
-     this.showToast("Usuario y/o contraseña son incorrectos")
+    this.storageService.buscarUsuario(email,contrasenia);
 } 
 
 //update
