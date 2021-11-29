@@ -11,6 +11,6 @@ export class TeslaService {
 
   getTopHeadLines()
   {
-    return this.http.get<RespuestaToHeadLines>('https://newsapi.org/v2/everything?q=tesla&from=2021-10-05&sortBy=publishedAt&apiKey=6e9a6440fce04ffb96fe8b639460d1f4')
+    return this.http.get<RespuestaToHeadLines>('https://newsapi.org/v2/everything?q=tesla&from=2021-11-01&sortBy=publishedAt&apiKey=6e9a6440fce04ffb96fe8b639460d1f4')
   }
 }

@@ -1,0 +1,6 @@
+{
+	"appId": "ReciclaTodo",
+	"appName": "MyApp",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

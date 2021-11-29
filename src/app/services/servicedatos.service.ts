@@ -22,7 +22,8 @@ export class ServicedatosService {
 
   private _storage : Storage;
 
-  constructor(private storage: Storage, private toastController: ToastController, public authService: AuthService, private router: Router) { 
+  constructor(private storage: Storage, private toastController: ToastController, 
+              public authService: AuthService, private router: Router) { 
     this.init();
   }
   async init(){
@@ -90,8 +91,6 @@ export class ServicedatosService {
         this.showToast("Usuario y/o contraseña incorrectos");
       }
     });
-    
-    return valor;
   }
  
     //Eliminar

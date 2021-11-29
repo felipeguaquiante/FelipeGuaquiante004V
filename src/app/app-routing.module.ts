@@ -18,7 +18,8 @@ const routes: Routes = [
   },
   {
     path: 'tienda',
-    loadChildren: () => import('./pages/tienda/tienda.module').then( m => m.TiendaPageModule)
+    loadChildren: () => import('./pages/tienda/tienda.module').then( m => m.TiendaPageModule),
+    canActivate:[IngresadoGuard]
   },
   {
     path: 'registro',

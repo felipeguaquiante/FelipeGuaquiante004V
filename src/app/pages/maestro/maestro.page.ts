@@ -18,7 +18,6 @@ export class MaestroPage implements OnInit {
 
 
   @ViewChild('myList')myList : IonList;
-  resultado: string;
   constructor(private storageService: ServicedatosService, private router: Router, 
     private plt: Platform, private toastController: ToastController,private menuController: MenuController,private alertController:AlertController, public authService: AuthService) { 
       this.plt.ready().then(()=>{
@@ -69,7 +68,7 @@ loadDatos(){
 
 //buscar usuario
 buscarUsuario(email: string,contrasenia:string){
-  this.resultado = this.storageService.buscarUsuario(email,contrasenia);
+  this.storageService.buscarUsuario(email,contrasenia);
 } 
 
 //update

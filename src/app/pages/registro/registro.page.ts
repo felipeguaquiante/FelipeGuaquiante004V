@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { ServicedatosService, Usuarios } from 'src/app/services/servicedatos.service';
-import { Platform , ToastController, IonList , MenuController , AlertController} from '@ionic/angular';
+import { Platform , ToastController, IonList , MenuController } from '@ionic/angular';
 
 
 @Component({
@@ -19,7 +19,7 @@ export class RegistroPage implements OnInit {
  
 
   constructor(private storageService: ServicedatosService, 
-    private plt: Platform, private toastController: ToastController,private menuController: MenuController,private alertController:AlertController) { 
+    private plt: Platform, private toastController: ToastController,private menuController: MenuController) { 
       this.plt.ready().then(()=>{
         this.loadDatos();
       });
@@ -29,9 +29,8 @@ export class RegistroPage implements OnInit {
   ngOnInit() {
   }
   onSubmit(){
-    console.log("submit");
-    console.log(this.usuarios);
     this.addDatos();
+    this.loadDatos();
   }
   mostrarMenu(){
         this.menuController.open('first');
@@ -56,34 +55,8 @@ loadDatos(){
   });
 }
 
-//update
-buscarUsuario(usuarios: Usuarios ){
-  this.storageService.updateDatos(usuarios).then(item=>{
-    this.showToast('Bienvenido '+usuarios.nombre)
-    this.saludoAlert(usuarios.nombre)
-    this.myList.closeSlidingItems();
-    this.loadDatos();
-  });
-} 
 
-//buscar usuario
-updateDatos(dato: Usuarios ){
-  dato.nombre = `UPDATED: ${dato.nombre}`;
-  this.storageService.updateDatos(dato).then(item=>{
-    this.showToast('Usuario actualizado!')
-    this.myList.closeSlidingItems();
-    this.loadDatos();
-  });
-} 
 
-//delete
-deleteDatos(usuarios: Usuarios){
-  this.storageService.deleteDatos(usuarios.id).then(item=>{
-    this.showToast('Usuario eliminado');
-    this.myList.closeSlidingItems();
-    this.loadDatos();
-  });
-}
 
 async showToast(msg){
   const toast = await this.toastController.create({
@@ -94,12 +67,5 @@ async showToast(msg){
 }
 
 
-async saludoAlert(nombre: string){
-  const alert = await this.alertController.create({
-    header: 'Welcome',
-    message: 'Bienvenid@ '+nombre,
-    buttons: ['OK']
-  });
-  await alert.present();
-}
+
 }

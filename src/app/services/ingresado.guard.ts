@@ -9,7 +9,8 @@ import { AuthService } from './auth.service';
 export class IngresadoGuard implements CanActivate {
   constructor(private router: Router, private authService: AuthService){}
   
-  canActivate(router: ActivatedRouteSnapshot,state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  canActivate(router: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if (this.authService.isLoggedIn(state.url)){
       return true;
     }
